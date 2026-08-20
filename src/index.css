@@ -1,0 +1,661 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: Inter, Poppins, ui-sans-serif, system-ui, sans-serif;
+  --color-verdits-navy: #050505;
+  --color-verdits-ink: #1c1b17;
+  --color-verdits-teal: #e8ce57;
+  --color-verdits-gold: #f7de63;
+  --color-verdits-goldSoft: #fff4b8;
+  --color-verdits-mint: #fff8da;
+  --color-verdits-bg: #f9f5e8;
+  --color-verdits-section: #fffdf3;
+  --color-verdits-card: #ffffff;
+  --color-verdits-line: #e9d889;
+  --color-verdits-accent: #f7de63;
+  --color-verdits-text: #494536;
+  --shadow-glow: 0 18px 40px rgba(5, 5, 5, 0.18);
+  --shadow-teal: 0 18px 34px rgba(247, 222, 99, 0.3);
+  --background-image-brand-gradient: linear-gradient(135deg, #050505 0%, #16140f 58%, #3a321a 100%);
+  --background-image-dark-radial: radial-gradient(circle at top left, rgba(247, 222, 99, 0.3), transparent 34%), radial-gradient(circle at top right, rgba(5, 5, 5, 0.07), transparent 30%), linear-gradient(180deg, #fffdf3 0%, #f9f5e8 100%);
+}
+
+:root {
+  --verdicts-ink: #0d1117;
+  --verdicts-charcoal: #17130a;
+  --verdicts-graphite: #2b2412;
+  --verdicts-slate: #6f633f;
+  --verdicts-gold: #f1d15f;
+  --verdicts-gold-dark: #988b64;
+  --verdicts-gold-soft: #fff4bf;
+  --verdicts-ivory: #fffde6;
+  --verdicts-panel: rgba(255, 254, 240, 0.92);
+  --verdicts-line: rgba(183, 143, 18, 0.34);
+  --verdicts-muted: #6f633f;
+}
+
+html {
+  min-height: 100%;
+  background: linear-gradient(90deg, #fffdb7 0%, #fffcc8 42%, #fffde8 100%);
+}
+
+body {
+  min-height: 100%;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(255, 255, 221, 0.92) 0, rgba(255, 255, 221, 0) 34%),
+    linear-gradient(90deg, #fffdb7 0%, #fffcc8 42%, #fffde8 100%);
+  color: var(--verdicts-ink);
+}
+
+/* User-entered values such as emails, URLs, file names, and long names must
+   remain inside their cards instead of creating horizontal overflow. */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+a,
+li,
+dd,
+td,
+th,
+label,
+button {
+  overflow-wrap: anywhere;
+}
+
+#root {
+  min-height: 100vh;
+  background: transparent;
+}
+
+.lawyer-theme {
+  background:
+    radial-gradient(circle at 12% 0%, rgba(255, 255, 221, 0.92) 0, rgba(255, 255, 221, 0) 34%),
+    linear-gradient(90deg, #fffdb7 0%, #fffcc8 42%, #fffde8 100%);
+  color: var(--verdicts-ink);
+}
+
+[class*="bg-[#f3f8fb]"],
+[class*="bg-[#f7fbfc]"],
+[class*="bg-[#fbfcff]"],
+[class*="bg-[#eef5ff]"],
+[class*="bg-[#eaf1f7]"],
+[class*="bg-[#fffdf6]"],
+[class*="bg-[#fffaf0]"],
+[class*="bg-[#f8fafc]"],
+[class*="bg-gray-50"],
+[class*="bg-gray-100"],
+[class*="bg-slate-50"],
+[class*="bg-slate-100"],
+[class*="bg-zinc-50"],
+[class*="bg-zinc-100"],
+[class*="bg-neutral-50"],
+[class*="bg-neutral-100"] {
+  background-color: transparent !important;
+}
+
+[class*="bg-[#fffef9]"],
+[class*="bg-[#f8f3e3]"],
+[class*="bg-white"],
+[class*="bg-amber-50"],
+[class*="bg-amber-100"],
+[class*="bg-stone-50"],
+[class*="bg-stone-100"] {
+  background-color: var(--verdicts-panel) !important;
+}
+
+[class*="bg-[#e8f7f2]"],
+[class*="bg-green-100"],
+[class*="bg-emerald-100"],
+[class*="bg-emerald-500/10"] {
+  background-color: rgba(241, 209, 95, 0.16) !important;
+}
+
+[class*="bg-[#15a276]"],
+[class*="bg-[#19b98d]"],
+[class*="bg-emerald-500"],
+[class*="bg-emerald-600"],
+[class*="bg-cyan-400"] {
+  background-color: var(--verdicts-gold) !important;
+  color: var(--verdicts-ink) !important;
+}
+
+[class*="hover:bg-[#15a276]"]:hover,
+[class*="hover:bg-emerald-700"]:hover,
+[class*="hover:bg-[#118b66]"]:hover,
+[class*="hover:bg-[#118460]"]:hover,
+[class*="hover:bg-[#10835e]"]:hover,
+[class*="hover:bg-[#12845f]"]:hover,
+[class*="hover:bg-[#19b98d]"]:hover,
+[class*="hover:bg-[#176049]"]:hover,
+[class*="hover:bg-[#007b64]"]:hover {
+  background-color: var(--verdicts-gold-dark) !important;
+  color: var(--verdicts-ink) !important;
+}
+
+/* Stable action colours: these must not inherit broad theme hover rules. */
+.verdits-primary-action {
+  background-color: var(--verdicts-gold) !important;
+  color: var(--verdicts-ink) !important;
+}
+
+.verdits-primary-action:hover {
+  background-color: #dfbb45 !important;
+  color: var(--verdicts-ink) !important;
+}
+
+/* This action starts light, then uses the dashboard action's gold hover. */
+.new-post-action {
+  background-color: #f1d15f !important;
+}
+
+.new-post-action:hover {
+  background-color: #d6a400 !important;
+}
+
+.verdits-primary-action:disabled {
+  background-color: #e6d79a !important;
+  color: #6f633f !important;
+  opacity: 1 !important;
+}
+
+.verdits-icon-action {
+  background-color: #365c8d !important;
+  color: var(--verdicts-ivory) !important;
+}
+
+.verdits-icon-action:hover {
+  background-color: #24466f !important;
+  color: var(--verdicts-ivory) !important;
+}
+
+.verdits-danger-action {
+  background-color: #b4232a !important;
+  color: var(--verdicts-ivory) !important;
+}
+
+.verdits-danger-action:hover {
+  background-color: #8f1820 !important;
+  color: var(--verdicts-ivory) !important;
+}
+
+.verdits-danger-secondary {
+  background-color: #c88178 !important;
+  color: #38120f !important;
+}
+
+.verdits-danger-secondary:hover {
+  background-color: #a95f57 !important;
+  color: var(--verdicts-ivory) !important;
+}
+
+/* Keep label contrast stable when a button changes its surface on hover. */
+@media (hover: hover) and (pointer: fine) {
+  [class*="hover:bg-[#fff2bf]"]:hover,
+  [class*="hover:bg-[#d6a400]"]:hover,
+  [class*="hover:bg-cyan-300"]:hover,
+  [class*="hover:bg-zinc-200"]:hover {
+    color: var(--verdicts-ink) !important;
+  }
+
+  [class*="hover:bg-red-"]:hover,
+  [class*="hover:bg-red-"]:hover svg,
+  [class*="hover:bg-zinc-700"]:hover,
+  [class*="hover:bg-zinc-800"]:hover {
+    color: var(--verdicts-ivory) !important;
+    stroke: var(--verdicts-ivory) !important;
+  }
+}
+
+[class*="text-[#062552]"],
+[class*="text-[#0b1f44]"],
+[class*="text-[#243b67]"],
+[class*="text-zinc-950"] {
+  color: var(--verdicts-ink) !important;
+}
+
+[class*="text-[#4b647c]"],
+[class*="text-[#5f7488]"],
+[class*="text-[#44516d]"],
+[class*="text-[#5e6c87]"],
+[class*="text-[#7f8ba2]"],
+[class*="text-[#8a95ab]"],
+[class*="text-zinc-500"],
+[class*="text-zinc-400"],
+[class*="text-slate-500"],
+[class*="text-slate-400"],
+[class*="text-gray-500"],
+[class*="text-gray-400"],
+[class*="text-neutral-500"],
+[class*="text-neutral-400"] {
+  color: var(--verdicts-muted) !important;
+}
+
+[class*="text-[#062552]"],
+[class*="text-[#0b1f44]"],
+[class*="text-[#243b67]"],
+[class*="text-zinc-950"],
+[class*="text-slate-900"],
+[class*="text-gray-900"],
+[class*="text-black"] {
+  color: var(--verdicts-ink) !important;
+}
+
+[class*="text-[#15a276]"],
+[class*="text-[#118b66]"],
+[class*="text-[#19b98d]"],
+[class*="text-emerald-500"],
+[class*="text-emerald-400"],
+[class*="text-emerald-300"],
+[class*="text-cyan-400"],
+[class*="text-cyan-300"],
+[class*="text-purple-400"],
+[class*="text-pink-400"] {
+  color: var(--verdicts-gold-dark) !important;
+}
+
+[class*="border-[#dbe2ef]"],
+[class*="border-[#d7e9ef]"],
+[class*="border-[#15a276]"],
+[class*="border-[#15a276]/"],
+[class*="border-emerald-500"],
+[class*="border-cyan-500"],
+[class*="border-gray-200"],
+[class*="border-gray-300"],
+[class*="border-slate-200"],
+[class*="border-slate-300"],
+[class*="border-zinc-200"],
+[class*="border-zinc-300"] {
+  border-color: var(--verdicts-line) !important;
+}
+
+[class*="focus:border-[#15a276]"]:focus,
+[class*="focus-within:border-[#15a276]"]:focus-within {
+  border-color: var(--verdicts-gold) !important;
+}
+
+input,
+textarea,
+select {
+  background-color: rgba(255, 254, 245, 0.95);
+  color: var(--verdicts-ink);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #8c7b4d;
+}
+
+[class*="shadow-[#062552]/"],
+[class*="shadow-[#15a276]/"] {
+  --tw-shadow-color: rgba(85, 65, 0, 0.16) !important;
+}
+
+::selection {
+  background: rgba(241, 209, 95, 0.34);
+  color: var(--verdicts-ink);
+}
+
+[class*="bg-white"] {
+  background-color: var(--verdicts-panel) !important;
+  color: var(--verdicts-ink) !important;
+}
+
+[class*="text-white"] {
+  color: var(--verdicts-ivory) !important;
+}
+
+[class*="bg-[#15a276]"][class*="text-white"],
+[class*="bg-[#19b98d]"][class*="text-white"],
+[class*="bg-[#d6a400]"][class*="text-white"],
+[class*="bg-[#f1d15f]"][class*="text-white"],
+[class*="bg-emerald-500"][class*="text-white"],
+[class*="bg-emerald-600"][class*="text-white"],
+[class*="bg-cyan-400"][class*="text-white"] {
+  color: var(--verdicts-ink) !important;
+}
+
+[class*="border-white"] {
+  border-color: rgba(255, 249, 220, 0.72) !important;
+}
+
+[class*="rounded-3xl"] {
+  border-radius: 1rem !important;
+}
+
+[class*="rounded-2xl"] {
+  border-radius: 0.875rem !important;
+}
+
+.lawyer-theme [class*="bg-zinc-950"],
+.lawyer-theme [class*="bg-zinc-900"],
+.lawyer-theme [class*="bg-zinc-800"] {
+  background-color: var(--verdicts-panel);
+  color: var(--verdicts-ink);
+}
+
+.lawyer-theme [class*="border-zinc-800"],
+.lawyer-theme [class*="border-zinc-700"] {
+  border-color: rgba(214, 184, 91, 0.42);
+}
+
+.lawyer-theme [class*="text-zinc-500"] {
+  color: var(--verdicts-muted);
+}
+
+.lawyer-theme [class*="text-zinc-400"],
+.lawyer-theme [class*="text-zinc-300"],
+.lawyer-theme [class*="text-zinc-200"],
+.lawyer-theme [class*="text-zinc-100"] {
+  color: #302a1c;
+}
+
+/* Lawyer dashboard panels are rendered in a light theme, so white utility text
+   would otherwise blend into the panel until it is selected. */
+.lawyer-theme [class*="text-white"] {
+  color: var(--verdicts-ink) !important;
+}
+
+/* Chat uses dark message bubbles and a dark conversation header.  It can be
+   rendered inside lawyer-theme, whose light-panel text override would otherwise
+   turn these labels black and make them unreadable. */
+.lawyer-theme .chat-page [class*="text-white"] {
+  color: var(--verdicts-ivory) !important;
+}
+
+.lawyer-theme .chat-page h3[class*="text-white"] {
+  color: var(--verdicts-ivory) !important;
+}
+
+/* Keep icons legible when they sit on the application's dark navy circles.
+   The global palette rules intentionally recolor some controls, but those
+   rules must not turn these Lucide glyphs the same color as their background. */
+.user-dark-icon,
+.user-dark-icon svg {
+  color: var(--verdicts-ivory) !important;
+}
+
+/* User Home uses one consistent yellow icon treatment. */
+.user-home-icon,
+.user-home-icon svg {
+  background-color: var(--verdicts-gold) !important;
+  color: var(--verdicts-ink) !important;
+}
+
+/* All case categories use a consistent black icon treatment. */
+.case-selection-icon {
+  background-color: var(--verdicts-charcoal) !important;
+}
+
+.case-selection-icon,
+.case-selection-icon svg {
+  color: var(--verdicts-ivory) !important;
+}
+
+/* Fixed dark actions need light foreground content even inside lawyer-theme. */
+.lawyer-theme .consultation-chat-button,
+.lawyer-theme .consultation-chat-button svg,
+.lawyer-theme .location-radius-active {
+  color: var(--verdicts-ivory) !important;
+}
+
+/* The chat header is dark, so its back control gets a high-contrast surface. */
+.lawyer-theme .chat-back-button {
+  background-color: var(--verdicts-ivory) !important;
+  color: var(--verdicts-ink) !important;
+}
+
+.lawyer-theme .chat-back-button svg {
+  color: var(--verdicts-ink) !important;
+}
+
+.lawyer-theme [class*="text-zinc-950"],
+.lawyer-theme h1,
+.lawyer-theme h2,
+.lawyer-theme h3,
+.lawyer-theme h4 {
+  color: var(--verdicts-ink);
+}
+
+.lawyer-theme [class*="bg-cyan-400"] {
+  background-color: var(--verdicts-gold);
+}
+
+.lawyer-theme [class*="text-cyan-400"],
+.lawyer-theme [class*="text-cyan-300"],
+.lawyer-theme [class*="text-purple-400"],
+.lawyer-theme [class*="text-pink-400"] {
+  color: var(--verdicts-gold-dark);
+}
+
+.lawyer-theme [class*="border-cyan-500"] {
+  border-color: rgba(214, 173, 66, 0.45);
+}
+
+.lawyer-theme input,
+.lawyer-theme textarea,
+.lawyer-theme select {
+  background-color: rgba(255, 254, 245, 0.95);
+  border-color: var(--verdicts-line);
+  color: var(--verdicts-ink);
+}
+
+.lawyer-theme input[class*="text-white"],
+.lawyer-theme textarea[class*="text-white"],
+.lawyer-theme select[class*="text-white"] {
+  color: var(--verdicts-ink) !important;
+}
+
+.lawyer-theme.lawyer-dashboard-workspace,
+.lawyer-theme.lawyer-dashboard-workspace [class*="text-white"] {
+  color: var(--verdicts-ink) !important;
+}
+
+.lawyer-theme.lawyer-dashboard-workspace [class*="text-zinc-100"],
+.lawyer-theme.lawyer-dashboard-workspace [class*="text-zinc-200"],
+.lawyer-theme.lawyer-dashboard-workspace [class*="text-zinc-300"],
+.lawyer-theme.lawyer-dashboard-workspace [class*="text-zinc-400"],
+.lawyer-theme.lawyer-dashboard-workspace [class*="text-gray-100"],
+.lawyer-theme.lawyer-dashboard-workspace [class*="text-gray-200"],
+.lawyer-theme.lawyer-dashboard-workspace [class*="text-gray-300"],
+.lawyer-theme.lawyer-dashboard-workspace [class*="text-slate-100"],
+.lawyer-theme.lawyer-dashboard-workspace [class*="text-slate-200"],
+.lawyer-theme.lawyer-dashboard-workspace [class*="text-slate-300"] {
+  color: #302a1c !important;
+}
+
+.lawyer-theme.lawyer-dashboard-workspace [class*="text-emerald-100"],
+.lawyer-theme.lawyer-dashboard-workspace [class*="text-emerald-200"],
+.lawyer-theme.lawyer-dashboard-workspace [class*="text-emerald-300"],
+.lawyer-theme.lawyer-dashboard-workspace [class*="text-emerald-400"],
+.lawyer-theme.lawyer-dashboard-workspace [class*="text-emerald-500"] {
+  color: #14795d !important;
+}
+
+.lawyer-theme.lawyer-dashboard-workspace [class*="text-red-100"],
+.lawyer-theme.lawyer-dashboard-workspace [class*="text-red-200"],
+.lawyer-theme.lawyer-dashboard-workspace [class*="text-red-300"],
+.lawyer-theme.lawyer-dashboard-workspace [class*="text-red-400"],
+.lawyer-theme.lawyer-dashboard-workspace [class*="text-red-500"] {
+  color: #8a1f1f !important;
+}
+
+.lawyer-theme.lawyer-dashboard-workspace input,
+.lawyer-theme.lawyer-dashboard-workspace textarea,
+.lawyer-theme.lawyer-dashboard-workspace select {
+  background-color: rgba(255, 254, 245, 0.98) !important;
+  border-color: var(--verdicts-line) !important;
+  color: var(--verdicts-ink) !important;
+  -webkit-text-fill-color: var(--verdicts-ink);
+}
+
+.lawyer-theme .lawyer-team-workspace,
+.lawyer-theme .lawyer-team-workspace [class*="text-white"] {
+  color: var(--verdicts-ink) !important;
+}
+
+.lawyer-theme .lawyer-team-workspace [class*="text-zinc-100"],
+.lawyer-theme .lawyer-team-workspace [class*="text-zinc-200"],
+.lawyer-theme .lawyer-team-workspace [class*="text-zinc-300"],
+.lawyer-theme .lawyer-team-workspace [class*="text-zinc-400"],
+.lawyer-theme .lawyer-team-workspace [class*="text-gray-100"],
+.lawyer-theme .lawyer-team-workspace [class*="text-gray-200"],
+.lawyer-theme .lawyer-team-workspace [class*="text-gray-300"],
+.lawyer-theme .lawyer-team-workspace [class*="text-slate-100"],
+.lawyer-theme .lawyer-team-workspace [class*="text-slate-200"],
+.lawyer-theme .lawyer-team-workspace [class*="text-slate-300"] {
+  color: #302a1c !important;
+}
+
+.lawyer-theme .lawyer-team-workspace [class*="text-emerald-100"],
+.lawyer-theme .lawyer-team-workspace [class*="text-emerald-200"],
+.lawyer-theme .lawyer-team-workspace [class*="text-emerald-300"] {
+  color: #14795d !important;
+}
+
+.lawyer-theme .lawyer-team-workspace [class*="text-red-100"],
+.lawyer-theme .lawyer-team-workspace [class*="text-red-200"],
+.lawyer-theme .lawyer-team-workspace [class*="text-red-300"] {
+  color: #8a1f1f !important;
+}
+
+.lawyer-theme .lawyer-team-workspace input,
+.lawyer-theme .lawyer-team-workspace textarea,
+.lawyer-theme .lawyer-team-workspace select {
+  background-color: rgba(255, 254, 245, 0.98) !important;
+  border-color: var(--verdicts-line) !important;
+  color: var(--verdicts-ink) !important;
+  -webkit-text-fill-color: var(--verdicts-ink);
+}
+
+.lawyer-theme input::placeholder,
+.lawyer-theme textarea::placeholder {
+  color: #8c7b4d;
+}
+
+.lawyer-theme.lawyer-dashboard-workspace input::placeholder,
+.lawyer-theme.lawyer-dashboard-workspace textarea::placeholder {
+  color: #8c7b4d !important;
+  -webkit-text-fill-color: #8c7b4d;
+}
+
+.lawyer-theme .lawyer-team-workspace input::placeholder,
+.lawyer-theme .lawyer-team-workspace textarea::placeholder {
+  color: #8c7b4d !important;
+  -webkit-text-fill-color: #8c7b4d;
+}
+
+.lawyer-theme .shadow-2xl {
+  box-shadow: 0 20px 60px rgba(85, 65, 0, 0.18);
+}
+
+.lawyer-theme button[class*="bg-zinc-900"],
+.lawyer-theme button[class*="bg-zinc-800"],
+.lawyer-theme a[class*="bg-zinc-900"] {
+  background-color: rgba(255, 249, 217, 0.94);
+  color: var(--verdicts-ink);
+}
+
+.lawyer-theme button[class*="bg-zinc-900"]:hover,
+.lawyer-theme button[class*="bg-zinc-800"]:hover,
+.lawyer-theme a[class*="bg-zinc-900"]:hover {
+  background-color: var(--verdicts-gold-soft);
+}
+
+.lawyer-theme button[class*="bg-white"] {
+  background-color: var(--verdicts-gold);
+  color: var(--verdicts-ink);
+}
+
+.lawyer-theme button[class*="bg-white"]:hover {
+  background-color: var(--verdicts-gold-dark);
+}
+
+.lawyer-theme header button[class*="bg-white"] {
+  background-color: rgba(255, 254, 240, 0.9);
+  color: var(--verdicts-ink);
+}
+
+.lawyer-theme header button[class*="bg-white"]:hover {
+  background-color: var(--verdicts-gold-soft);
+}
+
+/* Chat attachments intentionally keep a light, high-contrast surface inside
+   outgoing dark bubbles. These explicit classes are placed after the global
+   theme aliases so attachment controls never inherit the dark bubble color. */
+.chat-page .chat-sender-bubble {
+  background-color: #062552 !important;
+  border-color: #062552 !important;
+  color: #ffffff !important;
+}
+
+.chat-page .chat-receiver-bubble {
+  background-color: #ffffff !important;
+  border-color: #dbe2ef !important;
+  color: #243b67 !important;
+}
+
+.chat-page .chat-attachment-surface,
+.chat-page .chat-link-card {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+  border: 1px solid #dbe2ef;
+}
+
+.chat-page .chat-link-card {
+  display: block;
+}
+
+.chat-page .chat-attachment-primary,
+.chat-page .chat-attachment-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border-radius: 0.5rem;
+  padding: 0.45rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.chat-page .chat-attachment-primary {
+  background-color: #15a276 !important;
+  color: #ffffff !important;
+}
+
+.chat-page .chat-attachment-primary:hover {
+  background-color: #118b66 !important;
+  color: #ffffff !important;
+}
+
+.chat-page .chat-attachment-secondary {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1;
+}
+
+.chat-page .chat-attachment-secondary:hover,
+.chat-page .chat-link-card:hover {
+  background-color: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+
+.lawyer-theme .fixed.inset-0 {
+  color: var(--verdicts-ink);
+}
+
+.lawyer-theme [class*="bg-black/80"],
+.lawyer-theme [class*="bg-black/85"] {
+  background-color: rgba(5, 7, 10, 0.88) !important;
+}
+
+.lawyer-theme [class*="text-blue-300"],
+.lawyer-theme [class*="text-blue-200"] {
+  color: #f1d15f !important;
+}
